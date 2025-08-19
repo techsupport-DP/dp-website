@@ -46,33 +46,36 @@
         
         /* Smooth Navbar */
         header {
-            background: rgba(246, 246, 246, 0.616);
-            -webkit-backdrop-filter: blur(18px);
-            backdrop-filter: blur(10px);
-            color: var(--dark);
-            padding: 1rem 0;
-            position: fixed;
-            left: 0;
-            right: 0;
-            margin: 0;
-            width: 100vw;
-            z-index: 1000;
-            transition: all 0.5s ease;
-            box-shadow: 0 8px 56px 0 rgba(44, 62, 80, 0.08);
-            border-bottom: 1.5px solid rgba(255, 255, 255, 0.07);
-            border-radius: 0;
+    background: transparent;
+    color: var(--dark);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    box-sizing: border-box;
         }
         
         .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            background: transparent;
-            border-radius: 100px; /* or try 999px for a fully pill-shaped look */
-            box-shadow: 0 4px px 0 rgba(44, 62, 80, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    background: rgba(246, 246, 246, 0.666);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(10px);
+    border-bottom: 2.7px solid rgba(255, 255, 255, 0.07);
+    border-radius: 13px;
+    box-shadow: 0 8px 56px 0 rgba(44, 62, 80, 0.08);
+    box-sizing: border-box;
         }
         
         .logo {
@@ -87,7 +90,7 @@
             margin-right: 16px;
         }
         .logo span {
-            font-size: 1.5rem; /* 10% smaller */
+            font-size: 1rem; /* 10% smaller */
             font-weight: 700;
             letter-spacing: 0.5px;
         }
@@ -99,6 +102,9 @@
             gap: 1.5rem;
             margin: 0;
             padding: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
         }
 
         .nav-toggle {
@@ -162,10 +168,16 @@
             border-radius: 30px;
             font-weight: 600;
             transition: all 0.3s ease;
-            margin-left: 1.5rem;
+            margin-left: 0.1rem;
+            margin-right: 0;
             border: none;
             cursor: pointer;
             font-size: 0.95rem;
+            height: auto;
+            display: flex;
+            align-items: center;
+            display: flex;
+            align-items: center;
         }
         
         .nav-btn:hover {
@@ -199,7 +211,7 @@
                 line-height: 1.2;
                 font-weight: 700;
                 color: #ffffff; /* Custom color for hero h1 */
-                text-shadow: 0 2px 8px rgba(0,0,0,0.55), 0 1px 0 #222;
+                text-shadow: 0 2px 12px rgba(0, 0, 0, 0.682), 0 -2px 12px rgba(0, 0, 0, 0.479), 2px 0 12px rgba(0, 0, 0, 0.2), -2px 0 12px rgba(0,0,0,0.85);
         }
         
         .hero p {
@@ -301,7 +313,7 @@
         margin: 0 auto;
         padding: 6rem 2rem;
     }
-        }
+        
         
         .section-title {
             text-align: center;
@@ -335,7 +347,8 @@
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 1fr;
             gap: 2.5rem;
         }
         
@@ -513,7 +526,7 @@
             background-size: cover;
             text-align: auto;
             color: var(--black);
-        border-radius: 0;
+            border-radius: 0px;
     width: 100vw;
     position: relative;
     left: 0;
@@ -562,6 +575,7 @@
         }
         
         .contact-form input,
+        .contact-form input,
         .contact-form textarea {
             width: 100%;
             padding: 1.2rem;
@@ -572,6 +586,11 @@
             color: var(--dark);
             font-size: 1rem;
             transition: all 0.3s ease;
+            box-sizing: border-box;
+            /* Prevent border/background overflow */
+            resize: vertical;
+            min-height: 50px;
+            max-width: 100%;
         }
         
         .contact-form input:focus,
@@ -589,12 +608,17 @@
         
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #ff9898,#8b8b8b, #9fdaff, #aefbbd );
+            background: linear-gradient(52.5deg, #9fdaff, #8b8b8b, #ff9898);
             background-size: cover;
-            border-radius: 16px;
+            border-radius: 0px;
             color: var(--white);
             text-align: center;
             padding: 3rem 0;
+            width: 100vw;
+            position: relative;
+            left: 0;
+            margin: 0;
+            box-sizing: border-box;
         }
         
         .footer-content {
@@ -656,6 +680,7 @@
             width: auto;
             margin-left: 28px; /* Optional: space between logos */
             margin: auto;
+            text-align: center;
         }
         
         .side-logo-img {
@@ -679,6 +704,7 @@
             .nav-container {
                 flex-direction: column;
                 padding: 2rem 1rem;
+                max-width: 100vw;
             }
             .nav-toggle {
                 display: flex;
@@ -690,8 +716,10 @@
                 position: absolute;
                 top: 70px;
                 right: 0;
-                width: 80vw;
-                max-width: 320px;
+                left: 0;
+                width: 100vw;
+                max-width: 350px;
+                margin:  0 auto;
                 box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.08);
                 border-radius: 0 0 12px 12px;
                 padding: 2rem 1.5rem;
@@ -703,6 +731,9 @@
             .nav-btn {
                 margin-left: 0;
                 margin-top: 1rem;
+                width: 100%;
+                display: block;
+                text-align: center;
             }
             .hero h1 {
                 font-size: 2.8rem;
@@ -786,9 +817,9 @@
                     <li><a href="#portfolio" class="nav-portfolio" title="Portfolio">Portfolio</a></li>
                     <li><a href="#about" class="nav-about" title="About">About</a></li>
                     <li><a href="#contact" class="nav-contact" title="Contact">Contact</a></li>
-                    <li><button class="nav-btn btn-frosted" aria-label="Get in touch">Get in touch</button></li>
                 </ul>
             </nav>
+            <button class="nav-btn btn-frosted" aria-label="Get in touch">Get in touch</button>
         </div>
     </header>
 
@@ -815,7 +846,7 @@
             </div>
             <div class="service-card frosted-glass">
                 <i class="fas fa-video"></i>
-                <h3>AV Solutions</h3>
+                <h3>Large Venue AV</h3>
                 <p>Bespoke audio-video integration solutions meticulously crafted for your unique spatial requirements and functional needs</p>
             </div>
             <div class="service-card frosted-glass">
@@ -825,7 +856,7 @@
             </div>
             <div class="service-card frosted-glass">
                 <i class="fas fa-home"></i>
-                <h3>Smart Home Integrations</h3>
+                <h3>Smart Home Lighting Controls</h3>
                 <p>Effortless living, all connected</p>
             </div>
             
@@ -869,9 +900,9 @@
                 </div>
             </div>
             <div class="portfolio-item">
-                <img src="images/Home_Integration.jpg" alt="Home Integration">
+                <img src="images/home-inte.jpg" alt="Home Integration">
                 <div class="portfolio-overlay">
-                    <h3>Smart Home Integration & Lighting Controls</h3>
+                    <h3>Smart Home Automation & Lighting Control Desings</h3>
                     <p>Bringing Smart Home Integration solutions</p>
                 </div>
             </div>
@@ -921,25 +952,26 @@ Covering a broad spectrum, Decibels & Pixels caters to diverse range of clientel
                     </div>
                 </div>
                 <div class="contact-form frosted-glass">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Email Address" required>
-                        <input type="tel" placeholder="Phone Number">
-                        <textarea placeholder="Describe Your Project" rows="5" required></textarea>
+                    <form id="contactForm">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <input type="tel" name="phone" placeholder="Phone Number">
+                        <textarea name="message" placeholder="Describe Your Project" rows="5" required></textarea>
                         <button type="submit" class="btn btn-frosted">Submit Request</button>
+                        <div id="formStatus" style="margin-top:1rem;font-weight:bold;"></div>
                     </form>
                 </div>
             </div>
         </div>
+                <div style="width:100%;display:flex;justify-content:center;align-items:center;margin-top:2rem;">
+            <img src="images/namelogo.png" alt="New Logo" class="logo-img" style="height: 85px;px;width:auto;display:block;">
+        </div>      
     </section>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <span>Decibels</span> & <span>Pixels</span>
-            </div>
-            <p class="footer-text">Pioneering AV Integration through innovative technology & impeccable craftsmanship<br>Chennai - Bangalore - Hyderabad</p>
-            <img src="images/namelogo.png" alt="New Logo" class="logo-img">
+         
+            
+            <p class="footer-text">Pioneering AV Integration through innovative technology & impeccable craftsmanship<br><span style="font-weight:bold; font-size: 125%;">Chennai - Bangalore - Hyderabad</span></p>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1046,6 +1078,38 @@ Covering a broad spectrum, Decibels & Pixels caters to diverse range of clientel
 
         // Listen for scroll events
         window.addEventListener('scroll', animateOnScroll);
+        // Contact form AJAX submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const statusDiv = document.getElementById('formStatus');
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    statusDiv.textContent = '';
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+                    try {
+                        const response = await fetch('/api/contact', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(data)
+                        });
+                        if (response.ok) {
+                            statusDiv.style.color = 'green';
+                            statusDiv.textContent = 'Thank you! Your request has been sent.';
+                            form.reset();
+                        } else {
+                            const err = await response.json();
+                            statusDiv.style.color = 'red';
+                            statusDiv.textContent = err.error || 'Failed to send. Please try again later.';
+                        }
+                    } catch (err) {
+                        statusDiv.style.color = 'red';
+                        statusDiv.textContent = 'Failed to send. Please try again later.';
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
