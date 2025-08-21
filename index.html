@@ -48,8 +48,7 @@
         header {
     background: transparent;
     color: var(--dark);
-    padding: 1rem 0;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -68,14 +67,14 @@
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
-    background: rgba(246, 246, 246, 0.666);
+    padding: 16px;
+    background: rgba(246, 246, 246, 0.733);
     -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(10px);
-    border-bottom: 2.7px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 2.7px solid rgba(0, 0, 0, 0);
     border-radius: 13px;
-    box-shadow: 0 8px 56px 0 rgba(44, 62, 80, 0.08);
-    box-sizing: border-box;
+    box-shadow: 0 8px 56px 0 rgba(0, 0, 0, 0.08);
+    
         }
         
         .logo {
@@ -83,9 +82,10 @@
             align-items: center; /* vertical alignment */
             justify-content: flex-start; /* left, use center or flex-end for center/right */
             height: auto; /* 10% smaller */
+            margin-right: 4px;
         }
-        .logo-img {
-            width: 120px; /* 10% smaller */
+        .logo-img { /* Individual D&P logo image styles */
+            width: 120px;
             height: auto;
             margin-right: 16px;
         }
@@ -98,13 +98,15 @@
         nav ul {
             display: flex;
             list-style: none;
-            align-items: center;
-            gap: 1.5rem;
+            align-items:center;
+            position: sticky;
+            gap: 1rem;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             height: 100%;
             display: flex;
             align-items: center;
+            float: right; /* Aligns the nav items to the right */
         }
 
         .nav-toggle {
@@ -136,7 +138,7 @@
                 transition: all 0.3s ease;
                 padding: 0.5rem 0;
                 position: relative;
-                font-size: 0.95rem;
+                font-size: 1.05rem;
         }
 
             /* Individual menu option colors */
@@ -176,8 +178,6 @@
             height: auto;
             display: flex;
             align-items: center;
-            display: flex;
-            align-items: center;
         }
         
         .nav-btn:hover {
@@ -190,7 +190,7 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.034), rgba(0, 0, 0, 0.034)), 
-                        url('images/hero3.jpg');
+                        url('images/hero-4.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -239,8 +239,8 @@
             height: 100%;
             border-radius: 5px;
             z-index: -1;
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
             pointer-events: none;
         }
         
@@ -263,8 +263,8 @@
         .btn-frosted {
             background: rgba(255,255,255,0.7);
             color: #000000; /* Normal text color */
-            backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
             border: 1.5px solid rgba(255,255,255,0.4);
             box-shadow: 0 8px 32px 0 rgba(58, 60, 61, 0.41);
         }
@@ -328,10 +328,10 @@
             font-weight: 700;
         }
     /* Individual h2 colors - increased specificity */
-    .section-title h2.h2-services { color: #000000 !important; }      /* Our Services */
-    .section-title h2.h2-portfolio { color: #000000 !important; }     /* Our area of expertise */
-    .section-title h2.h2-contact { color: #000000 !important; }       /* Begin Your Project */
-    .section-title h2.h2-about { color: #000000 !important; }
+    .section-title h2.h2-services { color: #8000ff !important; }      /* Our Services */
+    .section-title h2.h2-portfolio { color: #00fd26 !important; }     /* Our area of expertise */
+    .section-title h2.h2-contact { color: #353535 !important; }       /* Begin Your Project */
+    .section-title h2.h2-about { color: #d21313 !important; }
         
         .section-title h2:after {
             content: '';
@@ -432,26 +432,12 @@
             transition: opacity 0.4s ease;
             color: var(--white);
             padding: 2rem;
-            text-align: auto;
         }
         .portfolio-overlay h3,
         .portfolio-overlay p {
-            max-width: 90%;
-            word-break: break-word;
             text-align: center;
-            display: block;
-            align-self: auto; 
         }
-        .portfolio-overlay h3 {
-            max-width: 90%;
-            word-break: break-word;
-            text-align: auto;
-            display: block;
-            align-self: auto;
-        }
-        .portfolioī-overlay h3 {
-            /* merged above for clarity */
-        }
+
         
         .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
@@ -509,7 +495,18 @@
         
         .about-content h2 {
             font-size: 2.5rem;
-            color: black;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .about-title {
+            color: #1158dd; /* Blue */
+        }
+        .philosophy-title {
+            color: #555555; /* Grey */
+        }
+        .about-content h3 {
+            font-size: 2.5rem;
+            color: rgb(45, 45, 45);
             margin-bottom: 2rem;
             font-weight: 700;
         }
@@ -607,8 +604,8 @@
         }
         
         /* Footer */
-        footer {
-            background: linear-gradient(52.5deg, #9fdaff, #8b8b8b, #ff9898);
+        footer {  
+            background: linear-gradient(51.9deg, #9fdaff, #8b8b8b, #ff9898);
             background-size: cover;
             border-radius: 0px;
             color: var(--white);
@@ -676,7 +673,7 @@
         
         /* Specific size for the new logo image only */
         img.logo-img[alt="New Logo"] {
-            height: 48px; /* Increased height */
+            height: 25px; /* Increased height */
             width: auto;
             margin-left: 28px; /* Optional: space between logos */
             margin: auto;
@@ -684,10 +681,23 @@
         }
         
         .side-logo-img {
-            height: 52px; /* Set your desired height */
+            height: 48px; /* Set your desired height */
             width: auto;
             margin-left: 0px; /* Optional: space between logos */
         }
+        
+    .namelogo-center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    }
+    .namelogo-img {
+    height: 80px !important; /* Change this value to your desired size */
+    width: auto !important;
+    display: block;
+    }
         
         /* Responsive Design */
         @media (max-width: 1200px) {
@@ -793,17 +803,33 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+        @media (max-width: 600px) {
+            .footer-text {
+            font-size: 1rem;
+              }
+
+             .social-links a {
+            font-size: 1.1rem;
+            margin: 0 8px;
+                }
+
+            .namelogo-img {
+            height: 65px;
         }
+
+
+        
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header id="navbar">
         <div class="nav-container">
             <div class="logo">
                 <img src="images/logo.png" alt="Company Logo" class="logo-img">
-                <img src="images/namelogo.png" alt="New Logo" class="logo-img">
+                <img src="images/abb-name.png" alt="New Logo" class="logo-img">
+                <img src="images/abb-logo.png" alt="ABB Logo" class="side-logo-img">
             </div>
             <button class="nav-toggle" aria-label="Open navigation menu" aria-controls="main-nav" aria-expanded="false">
                 <span></span>
@@ -815,17 +841,16 @@
                     <li><a href="#home" class="nav-home" title="Home">Home</a></li>
                     <li><a href="#services" class="nav-services" title="Services">Services</a></li>
                     <li><a href="#portfolio" class="nav-portfolio" title="Portfolio">Portfolio</a></li>
-                    <li><a href="#about" class="nav-about" title="About">About</a></li>
+                    <li><a href="#about" class="nav-about" title="About">About Us</a></li>
                     <li><a href="#contact" class="nav-contact" title="Contact">Contact</a></li>
                 </ul>
             </nav>
-            <button class="nav-btn btn-frosted" aria-label="Get in touch">Get in touch</button>
         </div>
     </header>
 
     <section class="hero" id="home">
     <div class="hero-content">
-        <h1>Premium AV Integration Designers</h1>
+        <h1>AV Integration & Consultant</h1>
         <p class="hero-p">Transforming spaces with cutting-edge audio-video technology for corporate, residential and specialized environments</p>
         <div class="btn-group">
             <a href="#contact" class="btn btn-frosted">Get in Touch</a>
@@ -842,33 +867,33 @@
             <div class="service-card frosted-glass">
                 <i class="fas fa-building"></i>
                 <h3>Corporate AV</h3>
-                <p>Comprehensive digital signage, boardroom, and event space solutions for enterprises</p>
+                <p>Comprehensive AV solutions for boardrooms, signage, and events, helping enterprises communicate, collaborate, and succeed effectively</p>
             </div>
             <div class="service-card frosted-glass">
                 <i class="fas fa-video"></i>
                 <h3>Large Venue AV</h3>
-                <p>Bespoke audio-video integration solutions meticulously crafted for your unique spatial requirements and functional needs</p>
+                <p>Custom audio-video solutions tailored to venue size, delivering seamless integration, reliable performance, and impactful audience experiences</p>
             </div>
             <div class="service-card frosted-glass">
                 <i class="fas fa-microphone"></i>
                 <h3>Conferencing AV</h3>
-                <p>Next-generation conference systems with flawless acoustics and 4K video conferencing capabilities</p>
+                <p>Next-generation conference systems with crystal-clear audio and 4K video for reliable, productive, and engaging collaboration</p>
             </div>
             <div class="service-card frosted-glass">
                 <i class="fas fa-home"></i>
-                <h3>Smart Home Lighting Controls</h3>
-                <p>Effortless living, all connected</p>
+                <h3>Smart Home Automation</h3>
+                <p>Effortlessly connect lighting, audio, security, and devices for everyday convenience, comfort, and seamless lifestyle integration</p>
             </div>
             
             <div class="service-card frosted-glass">
-                <i class="fas fa-music"></i>
-                <h3>Premium Audio</h3>
-                <p>High-resolution audio systems for critical listening environments and commercial applications</p>
+                <i class="fa-solid fa-pen-to-square" style="color: #004299;"></i>
+                <h3>AV Consulting</h3>
+                <p>Expert guidance to design, plan, and implement AV strategies that maximize performance, efficiency, and long-term value</p>
             </div>
             <div class="service-card frosted-glass">
                 <i class="fas fa-lightbulb"></i>
                 <h3>Smart Lighting</h3>
-                <p>Intelligent lighting control systems that harmonize with your AV environment.</p>
+                <p>Intelligent lighting controls that enhance ambiance, productivity, and efficiency while harmonizing seamlessly with advanced AV systems</p>
             </div>
         </div>
     </section>
@@ -878,7 +903,7 @@
             <h2 class="h2-portfolio">Our area of expertise</h2>
         </div>
         <div class="portfolio-grid">
-            <a class="portfolio-item" href="corporate-av-solutions.html" style="text-decoration:none; color:inherit;">
+                <a class="portfolio-item" href="corporate-av-solutions.html">
                 <img src="images/Board_Room.jpg" alt="Corporate AV Installation">
                 <div class="portfolio-overlay">
                     <h3>Corporate & Enterprise AV</h3>
@@ -900,9 +925,9 @@
                 </div>
             </div>
             <div class="portfolio-item">
-                <img src="images/home-inte.jpg" alt="Home Integration">
+                <img src="images/villa.png" alt="Home Integration">
                 <div class="portfolio-overlay">
-                    <h3>Smart Home Automation</h3>
+                    <h3>Smart Home Automation & Lighting Control Desings</h3>
                     <p>Bringing Smart Home Integration solutions</p>
                 </div>
             </div>
@@ -914,12 +939,11 @@
             <img src="images/about.jpg" alt="Our Team">
         </div>
         <div class="about-content">
-            <h2 class="h2-about">Concepts & Designs</h2>
-            <p>Conceptualization is the starting point from where we take off to reach our objective. We, the Team, at Decibels & Pixels are well aware of this fact and hence invest all our energies into our thoughts. We attune ourselves to match the minds of our clients, and connect with them to exactly zero in on our clients’ needs.
-
-Covering a broad spectrum, Decibels & Pixels caters to diverse range of clientele ranging from corporate barons in the commercial sector to Government Sectors and also clients. In short, we bring your thoughts and dreams to life, in the process of creating a perfect audio visual ambience at your workplace or home..</p>
-            <p>We serve clients in <strong>Chennai, Bangalore and Hyderabad</strong>, delivering solutions that range from intimate residential installations to large-scale commercial implementations.</p>
-            <p>Our in-house team of engineers, designers, and technicians oversee every aspect from initial concept through to final implementation, ensuring seamless integration of cutting-edge technology with architectural aesthetics.</p>
+            <h2 class="h2-about about-title">About us</h2>
+            <p>Founded in <strong>2012</strong>, Decibels & Pixels stands on a strong foundation backed by over <strong>27 years of industry expertise</strong>. <strong>Headquartered in Chennai</strong>, with a <strong>presence</strong> in <strong>Bangalore</strong> and <strong>Hyderabad</strong>, we proudly serve clients across India. Over the years, we’ve evolved into a trusted leader in audio-visual solutions, blending innovation with reliability to deliver impactful experiences. Our journey has been defined by a commitment to excellence, deep client understanding, and the ability to transform complex requirements into seamless, future-ready solutions</p>
+            <h2 class="h2-about philosophy-title">Our Philosophy</h2>
+            <p>At <strong>Decibels & Pixels</strong>, we believe every client’s vision is unique—and so is our approach. From corporate boardrooms and government projects to homes and large-scale venues, we design and deliver AV environments that inspire, connect, and perform flawlessly. With an in-house team skilled in design, planning, and technical execution, we take complete ownership of every detail, ensuring quality, precision, and timely delivery. More than technology, it’s the human connection we value most—building trust, enabling communication, and creating experiences that truly resonate</p>
+            
                 <a href="#contact" class="btn btn-frosted">Schedule a Meeting</a>
         </div>
     </section>
@@ -927,7 +951,7 @@ Covering a broad spectrum, Decibels & Pixels caters to diverse range of clientel
     <section class="contact" id="contact">
         <div class="contact-inner">
             <div class="section-title">
-                <h2 class="h2-contact">Begin Your Project</h2>
+                <h2 class="h2-contact">Bring Your Dream Come True</h2>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -936,7 +960,7 @@ Covering a broad spectrum, Decibels & Pixels caters to diverse range of clientel
                     <div class="contact-details">
                         <div>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Ashtalakshmi Nagar, Alapakkam, Chennai - 95</span>
+                            <span>Ashtalakshmi Nagar, Alapakkam, Chennai - 95, Tamilnadu</span>
                         </div>
                         <div>
                             <i class="fas fa-phone"></i>
@@ -958,30 +982,40 @@ Covering a broad spectrum, Decibels & Pixels caters to diverse range of clientel
                         <input type="tel" name="phone" placeholder="Phone Number">
                         <textarea name="message" placeholder="Describe Your Project" rows="5" required></textarea>
                         <button type="submit" class="btn btn-frosted">Submit Request</button>
-                        <div id="formStatus" style="margin-top:1rem;font-weight:bold;"></div>
+                        <div id="formStatus" class="form-status"></div>
                     </form>
                 </div>
             </div>
         </div>
-                <div style="width:100%;display:flex;justify-content:center;align-items:center;margin-top:2rem;">
-            <img src="images/namelogo.png" alt="New Logo" class="logo-img" style="height: 85px;px;width:auto;display:block;">
+        <div class="namelogo-center">
+            <img src="images/namelogo.png" alt="New Logo" class="logo-img namelogo-img">
+
         </div>      
     </section>
 
     <footer>
-         
-            
-            <p class="footer-text">Pioneering AV Integration through innovative technology & impeccable craftsmanship<br><span style="font-weight:bold; font-size: 125%;">Chennai - Bangalore - Hyderabad</span></p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p class="copyright">&copy; 2025 Decibels & Pixels Solutions Pvt Ltd. All Rights Reserved.</p>
+    <div class="footer-container">
+        <p class="footer-text">
+        Pioneering AV Integration through innovative technology & impeccable craftsmanship
+        <br>
+        <span class="footer-cities">Chennai • Bangalore • Hyderabad</span>
+        </p>
+
+        <div class="social-links">
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <p class="copyright">
+                &copy; 2025 Decibels & Pixels Solutions Pvt Ltd. All Rights Reserved.
+         </p>
         </div>
     </footer>
+
+
 
     <script>
         // Hamburger menu toggle
