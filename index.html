@@ -39,8 +39,8 @@
             background: rgba(255, 255, 255, 0.721);
             backdrop-filter: blur(40px);
             -webkit-backdrop-filter: blur(40px);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.61);
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.841);
             box-shadow: var(--accent); 
         }
         
@@ -48,7 +48,7 @@
         header {
     background: transparent;
     color: var(--dark);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -56,38 +56,46 @@
     transition: all 0.5s ease;
     display: flex;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
-        }
-        
-        .nav-container {
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+.nav-container {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 16px;
+    width: 100%;    
+    max-width: 100%;
+    height: fit-content;
+
+    border-radius: 0 0 13px 13px;
+    box-sizing: border-box;
     background: rgba(246, 246, 246, 0.733);
     -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(10px);
     border-bottom: 2.7px solid rgba(0, 0, 0, 0);
-    border-radius: 13px;
+    border-radius: 28px;
     box-shadow: 0 8px 56px 0 rgba(0, 0, 0, 0.08);
     
-        }
+}
         
         .logo {
             display: flex;
-            align-items: center; /* vertical alignment */
-            justify-content: flex-start; /* left, use center or flex-end for center/right */
-            height: auto; /* 10% smaller */
-            margin-right: 4px;
+            align-items: center;
+            justify-content: flex-start;
+            flex: 0 0 auto;
+            margin-right: clamp(2rem, 6vw, 3.5rem);
         }
         .logo-img { /* Individual D&P logo image styles */
             width: 120px;
             height: auto;
             margin-right: 16px;
+        }
+  
         }
         .logo span {
             font-size: 1rem; /* 10% smaller */
@@ -95,22 +103,35 @@
             letter-spacing: 0.5px;
         }
         
+        nav {
+            flex: 1 1 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
         nav ul {
             display: flex;
-            list-style: none;
-            align-items:center;
+            justify-content: flex-end;
+            align-items: center;
             position: sticky;
+            width: 100%;
+            max-width: 100%;
             gap: 1rem;
+            box-sizing: border-box;
             margin: 0;
             padding: 20px;
             height: 100%;
-            display: flex;
-            align-items: center;
             float: right; /* Aligns the nav items to the right */
+            list-style: none !important;
         }
 
         .nav-toggle {
-            display: none;
+            display: none; /* Hidden by default */
+            position: absolute;
+            right: 1rem;
+            top: 45%;
+            transform: translateY(-40%);
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -138,7 +159,7 @@
                 transition: all 0.3s ease;
                 padding: 0.5rem 0;
                 position: relative;
-                font-size: 1.05rem;
+                font-size: 1.25rem;
         }
 
             /* Individual menu option colors */
@@ -190,7 +211,7 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.034), rgba(0, 0, 0, 0.034)), 
-                        url('images/hero-4.png');
+                        url('images/hero-building.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -221,13 +242,15 @@
         }
 
         .hero-p {
-            color: #ffffff; /* Text color */
+            color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
             display: inline-block;
             position: relative;
             z-index: 1;
-            /* No background color, blur will be handled by ::before */
+            font-weight: 700;
+            font-size: 1.6rem;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.682), 0 -2px 12px rgba(0, 0, 0, 0.479), 2px 0 12px rgba(0, 0, 0, 0.2), -2px 0 12px rgba(0,0,0,0.85);
         }
 
         .hero-p::before {
@@ -242,6 +265,7 @@
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             pointer-events: none;
+            background: rgba(0,0,0,0.25);
         }
         
         /* Buttons */
@@ -328,10 +352,10 @@
             font-weight: 700;
         }
     /* Individual h2 colors - increased specificity */
-    .section-title h2.h2-services { color: #8000ff !important; }      /* Our Services */
-    .section-title h2.h2-portfolio { color: #00fd26 !important; }     /* Our area of expertise */
+    .section-title h2.h2-services { color: #353535 !important; }      /* Our Services */
+    .section-title h2.h2-portfolio { color: #353535 !important; }     /* Our area of expertise */
     .section-title h2.h2-contact { color: #353535 !important; }       /* Begin Your Project */
-    .section-title h2.h2-about { color: #d21313 !important; }
+    .section-title h2.h2-about { color: #ff6600!important; }
         
         .section-title h2:after {
             content: '';
@@ -392,7 +416,7 @@
         .portfolio {
             background: var(--light);
         }
-        
+
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -692,13 +716,31 @@
     justify-content: center;
     align-items: center;
     margin-top: 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
     }
     .namelogo-img {
-    height: 80px !important; /* Change this value to your desired size */
-    width: auto !important;
-    display: block;
+    height: auto !important;
+    max-width: 90vw;
+    margin: 0 auto;
     }
         
+        /* Add this CSS for custom abb-name.png sizing */
+        .abb-name-img {
+  height: 28px; /* Change this value to your liking */
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+        /* Add this CSS for custom logo.png sizing */
+        .main-logo-img {
+  height: 80px; /* Change this value to your liking */
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 {
@@ -711,58 +753,66 @@
         }
         
         @media (max-width: 992px) {
-            .nav-container {
-                flex-direction: column;
-                padding: 2rem 1rem;
-                max-width: 100vw;
-            }
-            .nav-toggle {
-                display: flex;
-            }
-            nav ul {
-                flex-direction: column;
-                align-items: flex-start;
-                background: rgba(255,255,255,0.98);
-                position: absolute;
-                top: 70px;
-                right: 0;
-                left: 0;
-                width: 100vw;
-                max-width: 350px;
-                margin:  0 auto;
-                box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.08);
-                border-radius: 0 0 12px 12px;
-                padding: 2rem 1.5rem;
-                display: none;
-            }
-            nav ul.open {
-                display: flex;
-            }
-            .nav-btn {
-                margin-left: 0;
-                margin-top: 1rem;
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            .about, .contact-container {
-                grid-template-columns: 1fr;
-            }
-            .about-image {
-                height: 400px;
-                order: -1;
-            }
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
+
+    .nav-toggle {
+        display: flex; /* Show the hamburger menu */
+    }
+            header {
+        flex-direction: column;
+        padding: 1rem 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1000;
+        box-sizing: border-box;
+    }
+    .nav-container {
+        flex-direction: column;
+        align-items: stretch;
+        height: var(--nav-height);
+        padding: clamp(0.5rem, 2vw, 1.5rem);
+        border-radius: 0 0 clamp(13px, 2vw, 18px) clamp(13px, 2vw, 18px);
+        display: flex;
+    }
+    .logo {
+        justify-content: flex-start;
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+    }
+    .logo-img,.side-logo-img,.namelogo-img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    nav {
+        justify-content: flex-start;
+        width: 100%;
+    }
+    nav ul {
+        justify-content: flex-start;
+    }
         }
         
+        @media (max-width: 576px) {
+            .logo-img {
+                width: 60px;
+                margin-right: 4px;
+            }
+            .side-logo-img {
+                height: 24px;
+            }
+            .namelogo-center {
+                padding: 0 0.5rem;
+            }
+            .namelogo-img {
+                height: auto !important;
+                max-width: 90vw;
+                margin: 0 auto;
+
+            }
+        }
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.4rem;
@@ -803,7 +853,7 @@
             .section-title h2 {
                 font-size: 2rem;
             }
-        @media (max-width: 600px) {
+        @media (max-width: 480px) {
             .footer-text {
             font-size: 1rem;
               }
@@ -814,23 +864,131 @@
                 }
 
             .namelogo-img {
-            height: 65px;
+            height: 28px !important; /* Change this value to your desired size */
+            max-width: 90vw;
+                }
         }
 
 
         
-    </style>
+    
+/* === Nav (Webflow-blog style) : overrides/additions === */
+:root { --nav-height: 72px; }
+
+header {
+  background: rgba(255,255,255,0.72);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+header.scrolled {
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+
+.nav-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: var(--nav-height);
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.logo {
+  gap: 10px;
+  text-decoration: none;
+}
+.logo img.logo-img { height: 32px; width: auto; }
+.logo img.brand-name { height: 22px; }
+.logo img.brand-ext { height: 32px; }
+
+nav ul {
+  list-style: none;
+  gap: 1.25rem;
+  padding: 0;
+}
+
+nav ul li { margin: 0; list-style: none !important; }
+
+/* Hover underline animation to mimic Webflow's clean underline */
+nav ul li a {
+  position: relative;
+  padding: 8px 2px;
+}
+nav ul li a:after {
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background: currentColor;
+}
+
+/* CTA button style consistent */
+.nav-btn {
+  margin-left: 0.75rem;
+}
+
+/* Hamburger transform to "X" */
+.nav-toggle { display:none; }
+.nav-toggle span { transition: transform .25s ease, opacity .2s ease; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* --- Mobile --- */
+@media (max-width: 992px) {
+  .nav-toggle { display:flex; }
+  .nav-container { height: var(--nav-height); }
+  nav { width: 100%; }
+  nav ul {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0; right: 0;
+    background: rgba(255,255,255,0.96);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 12px 16px;
+    max-height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .35s ease, opacity .2s ease;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  nav ul.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav ul li { width: 100%; }
+  nav ul li a { display: block; width: 100%; padding: 14px 6px; font-size: 1.15rem; }
+  body.no-scroll { overflow: hidden; }
+}
+
+/* --- Small screens --- */
+@media (max-width: 576px) {
+  .logo img.logo-img { height: 28px; }
+  .logo img.brand-name { height: 20px; }
+  .logo img.brand-ext { height: 28px; }
+}
+</style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header id="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Company Logo" class="logo-img">
-                <img src="images/abb-name.png" alt="New Logo" class="logo-img">
-                <img src="images/abb-logo.png" alt="ABB Logo" class="side-logo-img">
-            </div>
+            <a class="logo" href="#home" aria-label="Go to home">
+                <img src="images/logo.png" alt="Company Logo" class="logo-img main-logo-img">
+                <img src="images/abb-name.png" alt="Company Name" class="logo-img abb-name-img">
+                <img src="images/abb-logo.png" alt="Company Name Extension" class="side-logo-img brand-ext">
+            </a>
             <button class="nav-toggle" aria-label="Open navigation menu" aria-controls="main-nav" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -841,7 +999,7 @@
                     <li><a href="#home" class="nav-home" title="Home">Home</a></li>
                     <li><a href="#services" class="nav-services" title="Services">Services</a></li>
                     <li><a href="#portfolio" class="nav-portfolio" title="Portfolio">Portfolio</a></li>
-                    <li><a href="#about" class="nav-about" title="About">About Us</a></li>
+                    <li><a href="#about" class="nav-about" title="About">About us</a></li>
                     <li><a href="#contact" class="nav-contact" title="Contact">Contact</a></li>
                 </ul>
             </nav>
@@ -850,10 +1008,10 @@
 
     <section class="hero" id="home">
     <div class="hero-content">
-        <h1>AV Integration & Consultant</h1>
-        <p class="hero-p">Transforming spaces with cutting-edge audio-video technology for corporate, residential and specialized environments</p>
+        <h1>AV Integration & Consulting</h1>
+        <p class="hero-p">Transforming spaces with cutting-edge Audio-Video technology for corporate, residential and specialized environments</p>
         <div class="btn-group">
-            <a href="#contact" class="btn btn-frosted">Get in Touch</a>
+            <a href="#contact" class="btn btn-frosted">Request Quote</a>
             <a href="#services" class="btn btn-frosted">Explore Services</a>
         </div>
     </div>
@@ -885,15 +1043,16 @@
                 <p>Effortlessly connect lighting, audio, security, and devices for everyday convenience, comfort, and seamless lifestyle integration</p>
             </div>
             
+            
+            <div class="service-card frosted-glass">
+                <i class="fas fa-lightbulb" style="color: #FF932C;"></i>
+                <h3>Smart Lighting</h3>
+                <p>Intelligent lighting controls that enhance ambiance, productivity, and efficiency while harmonizing seamlessly with advanced AV systems</p>
+            </div>
             <div class="service-card frosted-glass">
                 <i class="fa-solid fa-pen-to-square" style="color: #004299;"></i>
                 <h3>AV Consulting</h3>
                 <p>Expert guidance to design, plan, and implement AV strategies that maximize performance, efficiency, and long-term value</p>
-            </div>
-            <div class="service-card frosted-glass">
-                <i class="fas fa-lightbulb"></i>
-                <h3>Smart Lighting</h3>
-                <p>Intelligent lighting controls that enhance ambiance, productivity, and efficiency while harmonizing seamlessly with advanced AV systems</p>
             </div>
         </div>
     </section>
@@ -904,7 +1063,7 @@
         </div>
         <div class="portfolio-grid">
                 <a class="portfolio-item" href="corporate-av-solutions.html">
-                <img src="images/Board_Room.jpg" alt="Corporate AV Installation">
+                <img src="images/Board_Room.png" alt="Corporate AV Installation">
                 <div class="portfolio-overlay">
                     <h3>Corporate & Enterprise AV</h3>
                     <p>Integrated AV solution for corporate spaces</p>
@@ -939,8 +1098,8 @@
             <img src="images/about.jpg" alt="Our Team">
         </div>
         <div class="about-content">
-            <h2 class="h2-about about-title">About us</h2>
-            <p>Founded in <strong>2012</strong>, Decibels & Pixels stands on a strong foundation backed by over <strong>27 years of industry expertise</strong>. <strong>Headquartered in Chennai</strong>, with a <strong>presence</strong> in <strong>Bangalore</strong> and <strong>Hyderabad</strong>, we proudly serve clients across India. Over the years, we’ve evolved into a trusted leader in audio-visual solutions, blending innovation with reliability to deliver impactful experiences. Our journey has been defined by a commitment to excellence, deep client understanding, and the ability to transform complex requirements into seamless, future-ready solutions</p>
+            <h2 class="h2-about about-title" style="color: #353535 !important;">About us</h2>
+            <p>Founded in <strong>2012</strong>, Decibels & Pixels stands on a strong foundation backed by over <strong>27 years of industry expertise</strong>. Headquartered in <strong>Chennai</strong>, we proudly serve clients across India. Over the years, we’ve evolved into a trusted leader in audio-visual solutions, blending innovation with reliability to deliver impactful experiences. Our journey has been defined by a commitment to excellence, deep client understanding, and the ability to transform complex requirements into seamless, future-ready solutions</p>
             <h2 class="h2-about philosophy-title">Our Philosophy</h2>
             <p>At <strong>Decibels & Pixels</strong>, we believe every client’s vision is unique—and so is our approach. From corporate boardrooms and government projects to homes and large-scale venues, we design and deliver AV environments that inspire, connect, and perform flawlessly. With an in-house team skilled in design, planning, and technical execution, we take complete ownership of every detail, ensuring quality, precision, and timely delivery. More than technology, it’s the human connection we value most—building trust, enabling communication, and creating experiences that truly resonate</p>
             
@@ -968,7 +1127,7 @@
                         </div>
                         <div>
                             <i class="fas fa-envelope"></i>
-                            <span>kamal@decibelspixels.com</span>
+                            <span>customersupport@decibelspixels.com</span>
                         </div>
                         <div>
                             
@@ -998,152 +1157,199 @@
         <p class="footer-text">
         Pioneering AV Integration through innovative technology & impeccable craftsmanship
         <br>
-        <span class="footer-cities">Chennai • Bangalore • Hyderabad</span>
+        <span class="footer-cities"><strong>Chennai • Bangalore • Hyderabad</strong></span>
         </p>
 
         <div class="social-links">
             <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
             <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+ 
         </div>
 
         <p class="copyright">
                 &copy; 2025 Decibels & Pixels Solutions Pvt Ltd. All Rights Reserved.
          </p>
         </div>
+
     </footer>
 
+<script>
+// Add dynamic background color for hero-p based on background
+function getContrastingColor(rgbColor) {
+    const values = rgbColor.match(/\d+/g);
+    if (!values || values.length < 3) return 'rgba(0, 0, 0, 0.4)';
 
+    const [r, g, b] = values.map(Number);
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    return luminance > 0.5 ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.3)';
+}
 
-    <script>
-        // Hamburger menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.getElementById('main-nav');
-        navToggle.addEventListener('click', function() {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !expanded);
-            navMenu.classList.toggle('open');
-        });
-        // Add dynamic background color for hero-p based on background
-        function getContrastingColor(rgbColor) {
-            const values = rgbColor.match(/\d+/g);
-            if (!values || values.length < 3) return 'rgba(0, 0, 0, 0.4)';
+function updateHeroPBackground() {
+    const heroSection = document.querySelector('.hero');
+    const heroP = document.querySelector('.hero-p');
+    if (heroSection && heroP) {
+        const heroBgColor = window.getComputedStyle(heroSection).backgroundImage;
+        // Background is an image with a light overlay; we keep a semi-transparent dark bg for text.
+    }
+}
 
-            const [r, g, b] = values.map(Number);
+// Call the function on page load
+updateHeroPBackground();
 
-            // Simple luminance calculation to determine if the color is light or dark
-            const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+// Smooth Scrolling with Offset
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
 
-            // Return a semi-transparent black for light backgrounds, or a semi-transparent white for dark ones
-            return luminance > 0.5 ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.3)';
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
         }
+    });
+});
 
-        function updateHeroPBackground() {
-            const heroSection = document.querySelector('.hero');
-            const heroP = document.querySelector('.hero-p');
-            if (heroSection && heroP) {
-                const heroBgColor = window.getComputedStyle(heroSection).backgroundImage;
-                // This is a placeholder since the hero background is an image.
-                // For a gradient or solid color, you would parse it.
-                // Since the hero background is an image with a light overlay,
-                // we will use a semi-transparent dark background for the text.
-                // If the background was a changing gradient, we'd use the logic below.
-                // Example logic for a dynamic gradient background:
-                // const gradient = getComputedStyle(heroSection).backgroundImage;
-                // const colorMatch = gradient.match(/rgba?\((\d+,\s*\d+,\s*\d+)/);
-                // if (colorMatch) {
-                //     const dominantColor = colorMatch[1].trim();
-                //     heroP.style.backgroundColor = getContrastingColor(`rgb(${dominantColor})`);
-                // }
-            }
+// Animate Elements on Scroll
+const animateOnScroll = function() {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content');
+
+    elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (elementPosition < windowHeight - 100) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
         }
+    });
+};
 
-        // Call the function on page load
-        updateHeroPBackground();
+// Set initial state for animated elements
+window.addEventListener('DOMContentLoaded', function() {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content');
 
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
 
-        // Smooth Scrolling with Offset
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+    // Trigger first check
+    animateOnScroll();
+});
 
-        // Animate Elements on Scroll
-        const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementPosition < windowHeight - 100) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
+// Listen for scroll events
+window.addEventListener('scroll', animateOnScroll);
 
-        // Set initial state for animated elements
-        window.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content');
-            
-            elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            });
-            
-            // Trigger first check
-            animateOnScroll();
-        });
+// --- Enhanced navbar behavior (Webflow-like) ---
+(function(){
+  const header = document.getElementById('navbar');
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('main-nav');
 
-        // Listen for scroll events
-        window.addEventListener('scroll', animateOnScroll);
-        // Contact form AJAX submission
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contactForm');
-            const statusDiv = document.getElementById('formStatus');
-            if (form) {
-                form.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    statusDiv.textContent = '';
-                    const formData = new FormData(form);
-                    const data = Object.fromEntries(formData.entries());
-                    try {
-                        const response = await fetch('/api/contact', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(data)
-                        });
-                        if (response.ok) {
-                            statusDiv.style.color = 'green';
-                            statusDiv.textContent = 'Thank you! Your request has been sent.';
-                            form.reset();
-                        } else {
-                            const err = await response.json();
-                            statusDiv.style.color = 'red';
-                            statusDiv.textContent = err.error || 'Failed to send. Please try again later.';
-                        }
-                    } catch (err) {
-                        statusDiv.style.color = 'red';
-                        statusDiv.textContent = 'Failed to send. Please try again later.';
-                    }
+  function closeMenu() {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('no-scroll');
+  }
+
+  // Toggle
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    menu.classList.toggle('open');
+    document.body.classList.toggle('no-scroll', !open);
+  });
+
+  // Close on nav link click (mobile)
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (window.innerWidth <= 992) closeMenu();
+    });
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // Sticky/shrink effect
+  function onScroll() {
+    if (window.scrollY > 8) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+})();
+
+// Contact form AJAX submission
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const statusDiv = document.getElementById('formStatus');
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            statusDiv.textContent = '';
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
                 });
+                if (response.ok) {
+                    statusDiv.style.color = 'green';
+                    statusDiv.textContent = 'Thank you! Your request has been sent.';
+                    form.reset();
+                } else {
+                    const err = await response.json();
+                    statusDiv.style.color = 'red';
+                    statusDiv.textContent = err.error || 'Failed to send. Please try again later.';
+                }
+            } catch (err) {
+                statusDiv.style.color = 'red';
+                statusDiv.textContent = 'Failed to send. Please try again later.';
             }
         });
-    </script>
+    }
+});
+</script>
+
+
+
+    <!-- Removed duplicate/old script block. The user's provided script after </footer> is now the only version present. -->
+    <a href="https://wa.me/919043011225" class="whatsapp-float" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<style>
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.501);
+  z-index: 2000;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  background: #128c7e;
+  color: #fff;
+}
+</style>
 </body>
 </html>
